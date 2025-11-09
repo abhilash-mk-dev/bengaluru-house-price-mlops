@@ -11,8 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Push to Hugging Face Space
-        uses: huggingface/action-push-to-space@main
+      - name: Push to HuggingFace Space
+        uses: hf-actions/action-push-to-space@v1
         with:
           repo-id: abhi20033/houseprice-mlops
           repo-type: space
