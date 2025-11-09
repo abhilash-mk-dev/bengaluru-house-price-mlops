@@ -5,7 +5,7 @@ import pandas as pd
 app = FastAPI()
 
 # CONNECT MLflow
-mlflow.set_tracking_uri("http://127.0.0.1:5000")
+mlflow.set_tracking_uri("http://172.17.0.1:5000")
 
 # LOAD MODEL FROM REGISTRY (STAGING)
 MODEL_NAME = "bengaluru_house_price_model"
