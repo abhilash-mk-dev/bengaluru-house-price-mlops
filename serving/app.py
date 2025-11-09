@@ -8,8 +8,11 @@ app = FastAPI()
 mlflow.set_tracking_uri("http://172.17.0.1:5000")
 
 # LOAD MODEL FROM REGISTRY (STAGING)
-MODEL_NAME = "bengaluru_house_price_model"
-model = mlflow.pyfunc.load_model(f"models:/{MODEL_NAME}/Staging")
+# MODEL_NAME = "bengaluru_house_price_model"
+# model = mlflow.pyfunc.load_model(f"models:/{MODEL_NAME}/Staging")
+
+MODEL_PATH = "./model_artifact"
+model = mlflow.pyfunc.load_model(MODEL_PATH)
 
 
 @app.get("/")

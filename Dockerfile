@@ -1,18 +1,17 @@
-FROM python:3.10
+FROM python:3.10-slim
 
 WORKDIR /app
 
-COPY requirements.txt .
-RUN pip install mlflow==3.1.4 \
-    scikit-learn==1.6.1 \
-    cloudpickle==3.1.1 \
-    pandas==2.3.2 \
-    numpy==2.0.2 \
-    psutil==7.0.0 \
-    fastapi uvicorn[standard]
+# install pip tools
+RUN pip install --upgrade pip
 
+# copy app code
+COPY serving ./serving
+COPY model_artifact ./model_artifact
 
-COPY serving/app.py ./serving/app.py
+# install requirements matching the model environment
+COPY model_artifact/requirements.txt .
+RUN pip install -r requirements.txt
 
 EXPOSE 8000
 
