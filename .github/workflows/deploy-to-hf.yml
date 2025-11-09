@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Push to HuggingFace Space
-        uses: huggingface/space-kit@v3
+        uses: huggingface/hf-action@v1
         with:
           repo: "spaces/abhi20033/houseprice-mlops"
           token: ${{ secrets.HF_TOKEN }}
