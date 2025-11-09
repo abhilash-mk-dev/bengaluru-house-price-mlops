@@ -8,12 +8,14 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - name: Push to HuggingFace Space
-        uses: hf-actions/action-push-to-space@v1 # Corrected Action Name
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Push to HF Space
+        uses: huggingface/space-action@v1
         with:
-          repo-id: abhi20033/houseprice-mlops
-          repo-type: space
-          token: ${{ secrets.HF_TOKEN }} # It is best practice to pass token via 'with'
+          space-id: abhi20033/houseprice-mlops
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
