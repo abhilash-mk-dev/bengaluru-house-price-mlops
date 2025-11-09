@@ -9,10 +9,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Push to Hugging Face Space
-        uses: huggingface/hub-action@v2
+        uses: huggingface/hub-docs/hub-action@v1
         with:
           repo: abhi20033/houseprice-mlops
           repo-type: space
