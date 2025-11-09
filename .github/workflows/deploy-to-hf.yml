@@ -2,19 +2,18 @@ name: Deploy to HF Space
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
-      - name: Deploy to HF Space
-        uses: huggingface/hub-action@v1
+      - name: Push to HuggingFace Space
+        uses: hf-actions/action-push-to-space@v1 # Corrected Action Name
         with:
           repo-id: abhi20033/houseprice-mlops
           repo-type: space
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          token: ${{ secrets.HF_TOKEN }} # It is best practice to pass token via 'with'
