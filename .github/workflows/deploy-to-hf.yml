@@ -2,20 +2,15 @@ name: Deploy to HF Space
 
 on:
   push:
-    branches:
-      - main
+    branches: ["main"]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Push to HF Space
-        uses: huggingface/space-action@v1
-        with:
-          space-id: abhi20033/houseprice-mlops
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      - name: Push to HF space
+        run: |
+          git remote add space https://oauth2:${{ secrets.HF_TOKEN }}@huggingface.co/spaces/abhi20033/houseprice-mlops
+          git push space main --force
