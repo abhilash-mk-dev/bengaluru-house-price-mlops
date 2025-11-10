@@ -4,24 +4,25 @@ import pandas as pd
 
 app = FastAPI()
 
-# CONNECT MLflow
-mlflow.set_tracking_uri("http://172.17.0.1:5000")
+# MLflow tracking to ngrok server
+mlflow.set_tracking_uri("https://enhancive-arrangeable-alvin.ngrok-free.dev")
 
-# LOAD MODEL FROM REGISTRY (STAGING)
-# MODEL_NAME = "bengaluru_house_price_model"
-# model = mlflow.pyfunc.load_model(f"models:/{MODEL_NAME}/Staging")
+# always load staging model
+MODEL_NAME = "bengaluru_house_price_model"
+model = mlflow.pyfunc.load_model(f"models:/{MODEL_NAME}/Staging")
 
-MODEL_PATH = "./model_artifact"
-model = mlflow.pyfunc.load_model(MODEL_PATH)
-
+# MODEL_PATH = "./model_artifact"
+# model = mlflow.pyfunc.load_model(MODEL_PATH)
 
 @app.get("/")
 def root():
     return {"status": "model API is running"}
-
 
 @app.post("/predict")
 def predict(data: dict):
     df = pd.DataFrame([data])
     pred = model.predict(df)[0]
     return {"prediction": float(pred)}
+
+
+
