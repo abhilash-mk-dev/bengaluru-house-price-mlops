@@ -1,8 +1,8 @@
 import streamlit as st
 import requests
 
-# API_URL = "http://localhost:8000/predict"   # calls internal API in same space
-API_URL = "https://abhi20033-houseprice-mlops.hf.space/predict"
+API_URL = "http://localhost:8000/predict"   # calls internal API in same space
+# API_URL = "https://abhi20033-houseprice-mlops.hf.space/predict"
 
 st.title("Bengaluru House Price Predictor (CI/CD)")
 
