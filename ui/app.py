@@ -3,7 +3,7 @@ import requests
 
 API_URL = "http://localhost:8000/predict"   # calls internal API in same space
 
-st.title("Bengaluru House Price Predictor (Hosted)")
+st.title("Bengaluru House Price Predictor (CI/CD)")
 
 locality = st.selectbox("Locality", [
     "Attibele", "BTM Layout", "Electronic City", "Indiranagar",
