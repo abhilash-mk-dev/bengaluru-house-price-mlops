@@ -36,6 +36,8 @@
 #         st.error("Error getting prediction")
 
 
+
+
 import streamlit as st
 import requests
 import numpy as np
@@ -48,7 +50,7 @@ from sklearn.metrics import mean_squared_error, r2_score
 API_URL = "http://localhost:8000/predict"  # internal API in same space
 # API_URL = "https://abhi20033-houseprice-mlops.hf.space/predict"
 
-st.title("🏠 Bengaluru House Price Predictor (CI/CD)")
+st.title("🏠 Bengaluru House-Price Predictor (CI/CD)")
 
 # ====================================
 # Initialize session state for tracking performance
